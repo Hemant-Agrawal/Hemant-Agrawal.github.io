@@ -8,6 +8,7 @@ import close from "./close.svg";
 
 import spaceInvasion from "./space-invasion.png";
 import portfolio from "./portfolio.png";
+import chatbot from "./chatbot.png";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
@@ -50,5 +51,6 @@ export {
   inno,
   fixcraft,
   spaceInvasion,
-  portfolio
+  chatbot,
+  portfolio,
 };

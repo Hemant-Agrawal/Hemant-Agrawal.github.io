@@ -20,6 +20,7 @@ import {
   fixcraft,
   spaceInvasion,
   portfolio,
+  chatbot,
 } from "../assets";
 
 export const navLinks = [
@@ -206,6 +207,27 @@ const projects = [
     image: portfolio,
     source_code_link: "https://github.com/Hemant-Agrawal/Portfolio",
   },
+    {
+    name: "Chat-e-Bot",
+    description:
+      "Chat-e-Bot is a Django-based chatbot designed to answer placement-related queries. It utilizes Natural Language Processing to provide accurate responses to user queries. The bot can be easily integrated into any website or application.",
+    tags: [
+      {
+        name: "Django",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Python",
+        color: "green-text-gradient",
+      },
+      {
+        name: "HTML/CSS",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: chatbot,
+    source_code_link:"https://github.com/Hemant-Agrawal/Chat-e-Bot",
+  },
   {
     name: "Space Invasion",
     description:
@@ -223,27 +245,7 @@ const projects = [
     image: spaceInvasion,
     source_code_link: "https://github.com/Hemant-Agrawal/Space-Invasion",
   },
-  // {
-  //   name: "Trip Guide",
-  //   description:
-  //     "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-  //   tags: [
-  //     {
-  //       name: "nextjs",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "supabase",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "css",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image: tripguide,
-  //   source_code_link: "https://github.com/",
-  // },
+
 ];
 
 export { services, technologies, experiences, projects };
