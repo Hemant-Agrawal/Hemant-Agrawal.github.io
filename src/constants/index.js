@@ -161,7 +161,8 @@ const experiences = [
     title: "Software Developement Engineer II",
     company_name: "CAW Studios",
     icon: caw,
-    iconBg: "#FFF",
+    iconBg: "#FFD731",
+    class: 'w-full h-full rounded-full',
     date: "May 2023 - Present",
     points: [
       "Developed and maintained software solutions, contributing to project architecture at ChimpsAtWork Studios Pvt. Ltd.",
