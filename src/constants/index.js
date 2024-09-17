@@ -21,6 +21,7 @@ import {
   spaceInvasion,
   portfolio,
   chatbot,
+  caw,
 } from "../assets";
 
 export const navLinks = [
@@ -156,6 +157,20 @@ const experiences = [
       "Worked on several web projects using agile methodologies for incremental development.",
     ],
   },
+  {
+    title: "Software Developement Engineer II",
+    company_name: "CAW Studios",
+    icon: caw,
+    iconBg: "#FFF",
+    date: "May 2023 - Present",
+    points: [
+      "Developed and maintained software solutions, contributing to project architecture at ChimpsAtWork Studios Pvt. Ltd.",
+      "Conducted rigorous code reviews and testing, ensuring reliable and scalable code delivery.",
+      "Upheld strict confidentiality standards for sensitive information, demonstrating professionalism in interactions.",
+      "Contributed to continuous improvement, staying updated on industry trends and enhancing software development processes.",
+      "Adhered to company policies and termination protocols, maintaining compliance and ethical conduct.",
+    ],
+  },
 ];
 
 // const testimonials = [
@@ -189,7 +204,7 @@ const projects = [
   {
     name: "Portfolio",
     description:
-    "My 3D portfolio, built with three.js, React, and Tailwind CSS, showcases my creative skills in the world of computer graphics. Using the latest 3D software and web technologies, I bring ideas to life with stunning visual effects, lifelike animations, and immersive environments. Each project in my portfolio is a testament to my passion for the craft and my commitment to delivering top-quality work.",
+      "My 3D portfolio, built with three.js, React, and Tailwind CSS, showcases my creative skills in the world of computer graphics. Using the latest 3D software and web technologies, I bring ideas to life with stunning visual effects, lifelike animations, and immersive environments. Each project in my portfolio is a testament to my passion for the craft and my commitment to delivering top-quality work.",
     tags: [
       {
         name: "react",
@@ -207,7 +222,7 @@ const projects = [
     image: portfolio,
     source_code_link: "https://github.com/Hemant-Agrawal/Portfolio",
   },
-    {
+  {
     name: "Chat-e-Bot",
     description:
       "Chat-e-Bot is a Django-based chatbot designed to answer placement-related queries. It utilizes Natural Language Processing to provide accurate responses to user queries. The bot can be easily integrated into any website or application.",
@@ -226,7 +241,7 @@ const projects = [
       },
     ],
     image: chatbot,
-    source_code_link:"https://github.com/Hemant-Agrawal/Chat-e-Bot",
+    source_code_link: "https://github.com/Hemant-Agrawal/Chat-e-Bot",
   },
   {
     name: "Space Invasion",
@@ -245,7 +260,6 @@ const projects = [
     image: spaceInvasion,
     source_code_link: "https://github.com/Hemant-Agrawal/Space-Invasion",
   },
-
 ];
 
 export { services, technologies, experiences, projects };

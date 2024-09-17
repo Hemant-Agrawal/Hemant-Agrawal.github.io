@@ -26,6 +26,7 @@ import threejs from "./tech/threejs.svg";
 
 import inno from "./company/inno.svg";
 import fixcraft from "./company/fixcraft.png";
+import caw from "./company/caw.jpeg";
 
 export {
   backend,
@@ -53,4 +54,5 @@ export {
   spaceInvasion,
   chatbot,
   portfolio,
+  caw
 };
