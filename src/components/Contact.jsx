@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -37,11 +36,12 @@ const Contact = () => {
       body: formData,
       headers: { "Accept": "application/json" },
     });
-    setForm({
-    name: "",
-    email: "",
-    message: "",
-  })
+    if (response.ok)
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      })
   };
 
   return (
