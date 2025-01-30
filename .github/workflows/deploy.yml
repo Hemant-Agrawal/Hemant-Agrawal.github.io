@@ -23,5 +23,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages  # The branch to deploy to
-          folder: build  # The output folder (adjust if needed)
           clean: true  # Removes old files before deploying
