@@ -2,26 +2,61 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - master  # Adjust if your default branch is different
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps # Adjust if using yarn or pnpm
-
-      - name: Build project
-        run: npm run build  # Adjust based on your build command
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - uses: actions/setup-node@v4
         with:
-          branch: gh-pages  # The branch to deploy to
-          folder: build  # The output folder (adjust if needed)
-          clean: true  # Removes old files before deploying
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Compute base path
+        id: base
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          OWNER="${GITHUB_REPOSITORY%/*}"
+          if [ "$REPO" = "${OWNER}.github.io" ]; then
+            echo "path=" >> "$GITHUB_OUTPUT"
+          else
+            echo "path=/$REPO" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build static export
+        env:
+          GH_PAGES_BASE_PATH: ${{ steps.base.outputs.path }}
+        run: |
+          npm run build
+          touch out/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

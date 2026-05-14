@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tar -xf bundle)",
+      "Bash(curl -s http://localhost:3037/homelab)",
+      "Bash(curl -sI http://localhost:3037/homelab)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

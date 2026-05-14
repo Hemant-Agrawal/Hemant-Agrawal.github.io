@@ -1,0 +1,118 @@
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 24px;
+  perspective: 1200px;
+  perspective-origin: 50% 30%;
+}
+.proj {
+  position: relative;
+  border: 1px solid var(--line-soft); border-radius: 18px;
+  background: linear-gradient(180deg, oklch(0.17 0.014 260 / 0.8), oklch(0.13 0.012 260 / 0.8));
+  padding: 0;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 200ms cubic-bezier(.2,.7,.2,1), border-color 200ms ease, box-shadow 200ms ease;
+  will-change: transform;
+}
+.proj:hover {
+  border-color: oklch(0.45 0.02 260);
+  box-shadow: 0 30px 60px oklch(0 0 0 / 0.5), 0 0 40px oklch(0.82 0.14 235 / 0.15);
+}
+.proj-inner {
+  padding: 26px;
+  transform-style: preserve-3d;
+}
+.proj .pmark {
+  font-family: var(--mono); font-size: 10px; color: var(--accent);
+  letter-spacing: 0.16em; text-transform: uppercase;
+  transform: translateZ(20px);
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.proj .badge-now {
+  font-family: var(--mono); font-size: 9px;
+  padding: 3px 8px; border-radius: 999px;
+  background: oklch(0.86 0.13 165 / 0.12);
+  border: 1px solid oklch(0.86 0.13 165 / 0.5);
+  color: var(--accent-3);
+  letter-spacing: 0.14em;
+}
+.proj .badge-old {
+  font-family: var(--mono); font-size: 9px;
+  padding: 3px 8px; border-radius: 999px;
+  background: oklch(0.30 0.018 260 / 0.4);
+  border: 1px solid var(--line-soft);
+  color: var(--fg-3);
+  letter-spacing: 0.14em;
+}
+.proj h3 {
+  font-size: 26px; margin: 10px 0 12px; letter-spacing: -0.02em;
+  transform: translateZ(40px);
+}
+.proj p { color: var(--fg-1); font-size: 14.5px; margin: 0 0 18px; line-height: 1.55; transform: translateZ(20px); }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; transform: translateZ(15px); }
+.proj-tags span {
+  font-family: var(--mono); font-size: 10px; color: var(--fg-2);
+  padding: 4px 8px; border: 1px solid var(--line-soft); border-radius: 4px;
+  background: oklch(0.13 0.012 260 / 0.5);
+}
+.proj-stats { display: flex; gap: 28px; padding-top: 16px; border-top: 1px dashed var(--line-soft); flex-wrap: wrap; margin-top: 16px; transform: translateZ(10px); }
+.proj-stats .v { font-size: 19px; letter-spacing: -0.02em; }
+.proj-stats .k { font-family: var(--mono); font-size: 10px; color: var(--fg-2); letter-spacing: 0.14em; text-transform: uppercase; }
+
+.proj .viz {
+  position: relative;
+  height: 160px;
+  border-radius: 12px;
+  background:
+    radial-gradient(60% 80% at 0% 100%, oklch(0.82 0.14 235 / 0.18), transparent 70%),
+    linear-gradient(135deg, oklch(0.16 0.012 260), oklch(0.13 0.012 260));
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  margin-bottom: 22px;
+  transform: translateZ(30px);
+}
+.proj .viz svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.proj .glare {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+    oklch(1 0 0 / 0.08), transparent 40%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.proj:hover .glare { opacity: 1; }
+
+.proj-cta {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 14px; transform: translateZ(20px);
+}
+.proj-cta a {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  background: oklch(0.18 0.015 260 / 0.6);
+  font-family: var(--mono); font-size: 11px;
+  color: var(--fg-1); text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+.proj-cta a:hover {
+  border-color: var(--accent);
+  color: var(--fg-0);
+  transform: translateY(-1px);
+}
+.proj-cta a.demo {
+  background: oklch(0.82 0.14 235 / 0.1);
+  border-color: oklch(0.82 0.14 235 / 0.35);
+  color: var(--fg-0);
+}
+.proj-cta a.demo:hover { border-color: var(--accent); box-shadow: 0 0 16px oklch(0.82 0.14 235 / 0.25); }
+.proj-cta .arr { font-size: 10px; opacity: 0.7; }
+
+.pq-strip { margin: 50px 0; }
+
+@media (max-width: 980px) { .proj-grid { grid-template-columns: 1fr; } }
