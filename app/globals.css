@@ -239,6 +239,138 @@ footer.foot a:hover { color: var(--fg-0); }
   .topbar .live { font-size: 10px; padding: 5px 9px; }
 }
 
+/* === Mobile: convert side rail into a bottom dock === */
+@media (max-width: 720px) {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Decorative scenes use absolutely-positioned, off-center geometry —
+     clip on mobile so they never push the page sideways. */
+  .id-scene, .orb-scene, .iso-scene, .shard-scene {
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  /* Bottom dock — horizontal, centered, safe-area aware */
+  .rail {
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: max(12px, env(safe-area-inset-bottom, 12px));
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 2px;
+    padding: 8px 10px;
+    max-width: calc(100vw - 24px);
+    overflow: visible;
+  }
+  .rail .mark {
+    margin-bottom: 0;
+    margin-right: 6px;
+    width: 32px; height: 32px;
+    font-size: 11px;
+  }
+  .rail a {
+    width: 32px; height: 32px;
+    font-size: 10px;
+  }
+  .rail .sep {
+    width: 1px; height: auto;
+    align-self: stretch;
+    margin: 4px 6px;
+  }
+  /* Tooltips above icons on mobile */
+  .rail a .tip {
+    left: 50%; top: auto; bottom: 100%;
+    margin-left: 0; margin-bottom: 10px;
+    transform: translateX(-50%) translateY(4px);
+  }
+  .rail a:hover .tip,
+  .rail a:focus .tip {
+    transform: translateX(-50%) translateY(0);
+  }
+  .rail a.active {
+    box-shadow: 0 0 16px oklch(0.86 0.13 165 / 0.6);
+  }
+
+  /* Page no longer dodges a left rail; add bottom space for dock */
+  .page {
+    padding: 64px 18px 120px 18px;
+    max-width: 100%;
+  }
+  footer.foot {
+    padding: 24px 18px 110px 18px;
+    max-width: 100%;
+    margin-left: 0; margin-right: 0;
+  }
+
+  /* Hide top status pill on small screens */
+  .topbar { display: none; }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .rail {
+    padding: 6px 8px;
+    gap: 0;
+  }
+  .rail a, .rail .mark { width: 28px; height: 28px; font-size: 9.5px; }
+  .rail .mark { margin-right: 4px; }
+  .rail .sep { margin: 4px 4px; }
+}
+
+/* ===== Custom scrollbar ===== */
+:root {
+  scrollbar-color: oklch(0.30 0.018 260 / 0.6) transparent;
+  scrollbar-width: thin;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: oklch(0.13 0.012 260 / 0.4);
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    oklch(0.82 0.14 235 / 0.55),
+    oklch(0.74 0.17 295 / 0.55)
+  );
+  border: 2px solid oklch(0.13 0.012 260);
+  border-radius: 999px;
+  box-shadow: inset 0 0 4px oklch(0 0 0 / 0.3);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    oklch(0.82 0.14 235 / 0.85),
+    oklch(0.74 0.17 295 / 0.85)
+  );
+  box-shadow: 0 0 8px var(--glow);
+}
+*::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(
+    180deg,
+    var(--accent),
+    var(--accent-2)
+  );
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+@media (max-width: 720px) {
+  *::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  *::-webkit-scrollbar-thumb {
+    border-width: 0;
+  }
+}
+
 /* ===== Page transition overlay ===== */
 .page-transition {
   position: fixed; inset: 0;

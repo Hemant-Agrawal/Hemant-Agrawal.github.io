@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { IdCard } from "./IdCard";
+import { YearsCount } from "./YearsCount";
 import "./home.css";
+
+const CAREER_START = "2020-11-23";
 
 export const metadata: Metadata = {
   title: "Hemant Agrawal — SDE 3 · Full-Stack & AI",
@@ -51,7 +54,7 @@ export default function HomePage() {
           </p>
 
           <div className="stat-row">
-            <div className="cell"><div className="k">Years</div><div className="v">5+ <small>yrs</small></div></div>
+            <div className="cell"><div className="k">Years</div><div className="v"><YearsCount since={CAREER_START} /> <small>yrs</small></div></div>
             <div className="cell"><div className="k">Level</div><div className="v">SDE 3</div></div>
             <div className="cell"><div className="k">Companies</div><div className="v">3</div></div>
             <div className="cell"><div className="k">Award</div><div className="v">IC <small>of month</small></div></div>
