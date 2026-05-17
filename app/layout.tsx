@@ -23,9 +23,58 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+const SITE_URL = "https://hemant-agrawal.github.io";
+
 export const metadata: Metadata = {
-  title: "Hemant Agrawal — Portfolio",
-  description: "SDE 3 · building end-to-end, no template.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Hemant Agrawal — SDE 3 · Full-Stack & AI",
+    template: "%s — Hemant Agrawal",
+  },
+  description:
+    "Senior software engineer (SDE 3). Five years of front-end heavy, full-stack products in React, Next.js, Tailwind — now exploring AI on the front-end.",
+  keywords: [
+    "Hemant Agrawal",
+    "SDE 3",
+    "Full-Stack Engineer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "AI",
+    "Frontend",
+    "Portfolio",
+  ],
+  authors: [{ name: "Hemant Agrawal" }],
+  creator: "Hemant Agrawal",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "Hemant Agrawal",
+    title: "Hemant Agrawal — SDE 3 · Full-Stack & AI",
+    description:
+      "Senior software engineer (SDE 3). Front-end heavy, full-stack — React, Next.js, AI.",
+    url: SITE_URL,
+    locale: "en_US",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Hemant Agrawal — SDE 3 · Full-Stack & AI",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hemant Agrawal — SDE 3 · Full-Stack & AI",
+    description:
+      "Senior software engineer (SDE 3). Front-end heavy, full-stack — React, Next.js, AI.",
+    images: ["/og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
