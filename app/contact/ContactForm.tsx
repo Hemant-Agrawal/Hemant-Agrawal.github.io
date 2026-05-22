@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 
 const ROLE_LABELS: Record<string, string> = {
   developer: "Fellow Developer",
@@ -9,11 +10,17 @@ const ROLE_LABELS: Record<string, string> = {
   other: "Something Else",
 };
 
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+type Status = "idle" | "sending" | "success" | "error";
+
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
-  const [opened, setOpened] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = formRef.current;
     if (!form) return;
@@ -30,19 +37,34 @@ export function ContactForm() {
       return;
     }
 
-    const subj = `[${ROLE_LABELS[kind] || "Hello"}] ${subject}`;
-    const lines = [
-      "Hi Hemant,",
-      "",
-      message,
-      "",
-      `— ${name}` + (company ? ` · ${company}` : ""),
-      `Reply: ${email}`,
-      "Sent via: portfolio contact form",
-    ];
-    const mailto = `mailto:ha.hemantagrawal@gmail.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(lines.join("\n"))}`;
-    window.location.href = mailto;
-    setOpened(true);
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      console.error("EmailJS env vars missing");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          role: ROLE_LABELS[kind] || "Hello",
+          from_name: name,
+          from_email: email,
+          reply_to: email,
+          company: company || "—",
+          subject,
+          message,
+        },
+        { publicKey: PUBLIC_KEY },
+      );
+      form.reset();
+      setStatus("success");
+    } catch (err) {
+      console.error("EmailJS send failed", err);
+      setStatus("error");
+    }
   };
 
   return (
@@ -97,18 +119,25 @@ export function ContactForm() {
       </div>
 
       <div className="form-actions">
-        <span className="form-hint">{`// opens your email client — no data leaves the page`}</span>
-        <button type="submit" className="submit">
-          Send message <span className="arrow">→</span>
+        <span className="form-hint">{`// sent straight to my inbox — no email client needed`}</span>
+        <button type="submit" className="submit" disabled={status === "sending"}>
+          {status === "sending" ? "Sending…" : "Send message"}{" "}
+          <span className="arrow">{status === "sending" ? "…" : "→"}</span>
         </button>
       </div>
 
-      <div className={`form-success${opened ? " show" : ""}`}>
-        <b>✓ Ready to send.</b> Your email app should have just opened with everything prefilled. If nothing happened, copy the details and email{" "}
+      <div className={`form-success${status === "success" ? " show" : ""}`}>
+        <b>✓ Message sent.</b> Thanks for reaching out — I read every message
+        personally and will get back to you, usually within 48 hours.
+      </div>
+
+      <div className={`form-error${status === "error" ? " show" : ""}`}>
+        <b>✕ Couldn&apos;t send.</b> Something went wrong on the way out. Please
+        email me directly at{" "}
         <a href="mailto:ha.hemantagrawal@gmail.com" style={{ color: "var(--accent)" }}>
           ha.hemantagrawal@gmail.com
-        </a>{" "}
-        directly.
+        </a>
+        .
       </div>
     </form>
   );

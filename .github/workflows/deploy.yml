@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -41,6 +41,9 @@ jobs:
       - name: Build static export
         env:
           GH_PAGES_BASE_PATH: ${{ steps.base.outputs.path }}
+          NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
+          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
+          NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY }}
         run: |
           npm run build
           touch out/.nojekyll

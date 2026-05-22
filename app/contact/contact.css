@@ -221,6 +221,20 @@
 .form-success.show { display: block; }
 .form-success b { color: var(--accent-3); }
 
+.form-error {
+  display: none;
+  padding: 16px 18px;
+  margin-top: 18px;
+  border: 1px solid oklch(0.65 0.2 25 / 0.5);
+  border-radius: 10px;
+  background: oklch(0.65 0.2 25 / 0.08);
+  color: var(--fg-0);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.form-error.show { display: block; }
+.form-error b { color: oklch(0.7 0.2 25); }
+
 .resume-cta {
   margin: 0 0 60px;
   padding: 28px;
