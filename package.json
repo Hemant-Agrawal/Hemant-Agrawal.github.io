@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@next/third-parties": "^16.2.6",
     "next": "^15.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

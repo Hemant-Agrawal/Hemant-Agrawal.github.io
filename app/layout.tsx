@@ -7,7 +7,10 @@ import { TopBar } from "@/components/TopBar";
 import { Footer } from "@/components/Footer";
 import { RevealObserver } from "@/components/Reveal";
 import { PageTransitionProvider } from "@/components/PageTransition";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
+
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
@@ -90,6 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <RevealObserver />
         </PageTransitionProvider>
+        {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
       </body>
     </html>
   );
