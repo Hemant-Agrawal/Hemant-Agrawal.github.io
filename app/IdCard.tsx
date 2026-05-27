@@ -12,6 +12,7 @@ export function IdCard() {
     const card = cardRef.current;
     if (!scene || !card) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
 
     let tx = 0, ty = 0, cx = 0, cy = 0;
     let raf = 0;
@@ -58,6 +59,7 @@ export function IdCard() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
