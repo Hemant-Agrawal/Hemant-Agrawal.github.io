@@ -108,28 +108,28 @@ export default function HomePage() {
           <div className="why-card">
             <span className="ix">01</span>
             <div>
-              <h4>I own modules, not tickets.</h4>
+              <h3>I own modules, not tickets.</h3>
               <p>At CAW I lead larger ownership areas — driving design decisions and mentoring junior engineers, not just executing handed-off specs.</p>
             </div>
           </div>
           <div className="why-card">
             <span className="ix">02</span>
             <div>
-              <h4>Performance &amp; quality are non-negotiable.</h4>
+              <h3>Performance &amp; quality are non-negotiable.</h3>
               <p>I migrate to faster stacks (React → Next.js, twice), ship PWAs with service workers, and gate every component with Jest, RTL and Playwright.</p>
             </div>
           </div>
           <div className="why-card">
             <span className="ix">03</span>
             <div>
-              <h4>I build the pipeline, not just the page.</h4>
+              <h3>I build the pipeline, not just the page.</h3>
               <p>GitLab Runner with Google Cloud, Storybook, automated regression. The fastest team is the one whose CI never blocks them.</p>
             </div>
           </div>
           <div className="why-card">
             <span className="ix">04</span>
             <div>
-              <h4>AI is the next layer of every product I build.</h4>
+              <h3>AI is the next layer of every product I build.</h3>
               <p>Claude, MCP servers, and agentic workflows on n8n are top of my stack. I&apos;m running a homelab of containers to prototype this in the open, every week.</p>
             </div>
           </div>
@@ -140,19 +140,19 @@ export default function HomePage() {
         <div className="hl">
           <div className="badge">↑</div>
           <div className="lab">PROMOTION · 2026</div>
-          <h4>SDE 2 → SDE 3 at CAW</h4>
+          <h3>SDE 2 → SDE 3 at CAW</h3>
           <p>Promoted into senior IC level after 2y 9m of contribution at Chimpsatwork Studios. Now leading ownership areas, design decisions and mentorship.</p>
         </div>
         <div className="hl gold">
           <div className="badge">★</div>
           <div className="lab">RECOGNITION</div>
-          <h4>Individual Contributor of the Month</h4>
+          <h3>Individual Contributor of the Month</h3>
           <p>Recognized for high-impact individual contribution — shipping cleanly, defending decisions, and lifting the team along the way.</p>
         </div>
         <div className="hl violet">
           <div className="badge">▣</div>
           <div className="lab">EDUCATION · 2021—2023</div>
-          <h4>MCA · Chandigarh University</h4>
+          <h3>MCA · Chandigarh University</h3>
           <p>Master of Computer Applications. BCA at GLA University before that. Self-taught full-stack and AI on top of formal CS foundations.</p>
         </div>
       </section>

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 export function CursorGlow() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const glow = document.querySelector<HTMLElement>(".cursor-glow");
     if (!glow) return;
 
