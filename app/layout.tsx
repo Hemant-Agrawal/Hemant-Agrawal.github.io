@@ -14,16 +14,18 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "700"],
   variable: "--font-inter-tight",
   display: "swap",
+  preload: true,
 });
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400"],
   variable: "--font-jetbrains-mono",
   display: "swap",
+  preload: false,
 });
 
 const SITE_URL = "https://hemant-agrawal.github.io";
