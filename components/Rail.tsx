@@ -85,15 +85,21 @@ const PAGES = [
   { href: "/contact", label: "Contact", icon: "contact" },
 ];
 
+function stripSlash(p: string) {
+  if (p.length > 1 && p.endsWith("/")) return p.slice(0, -1);
+  return p;
+}
+
 export function Rail() {
   const pathname = usePathname();
   const { trigger } = usePageTransition();
+  const here = stripSlash(pathname || "/");
 
   return (
     <nav className="rail" aria-label="Primary">
       <div className="mark" title="Hemant Agrawal">HA</div>
       {PAGES.map((p) => {
-        const active = pathname === p.href;
+        const active = here === stripSlash(p.href);
         return (
           <Link
             key={p.href}
@@ -110,7 +116,7 @@ export function Rail() {
                 e.altKey
               )
                 return;
-              if (pathname === p.href) return;
+              if (active) return;
               trigger(p.label);
             }}
           >
