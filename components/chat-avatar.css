@@ -139,6 +139,7 @@
   max-width: calc(100vw - 32px);
   height: 560px;
   max-height: calc(100vh - 120px);
+  max-height: calc(100dvh - 120px);
   background: linear-gradient(180deg, oklch(0.17 0.014 260 / 0.96), oklch(0.13 0.012 260 / 0.96));
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
@@ -435,7 +436,8 @@
 @media (max-width: 720px) {
   #ha-bot-root {
     right: 14px;
-    bottom: 78px;
+    /* Clear the bottom dock, which itself rises with the safe-area inset */
+    bottom: calc(66px + max(12px, env(safe-area-inset-bottom, 12px)));
   }
   .ha-bot-fab {
     width: 54px;
@@ -443,13 +445,35 @@
   }
   .ha-bot-fab .glyph { font-size: 19px; }
   .ha-bot-panel {
-    width: calc(100vw - 24px);
-    height: calc(100vh - 180px);
-    max-height: 540px;
-    right: 0;
-    bottom: 68px;
+    /* Fixed sheet so width/height track the viewport, not the FAB anchor */
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+    top: max(12px, env(safe-area-inset-top, 12px));
+    bottom: calc(132px + max(12px, env(safe-area-inset-bottom, 12px)));
+    height: auto;
+    max-height: none;
   }
+  /* 16px stops iOS Safari from zooming the page on focus */
+  .ha-input { font-size: 16px; }
   .ha-bot-teaser { display: none; }
+}
+@media (max-width: 380px) {
+  #ha-bot-root { right: 10px; }
+  .ha-bot-fab {
+    width: 48px;
+    height: 48px;
+  }
+  .ha-bot-fab .glyph { font-size: 17px; }
+  .ha-bot-panel {
+    left: 8px;
+    right: 8px;
+    bottom: calc(122px + max(12px, env(safe-area-inset-bottom, 12px)));
+  }
+  .ha-bot-head { padding: 12px 14px 10px; }
+  .ha-bot-log { padding: 12px 12px 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ha-bot-fab .ring,
