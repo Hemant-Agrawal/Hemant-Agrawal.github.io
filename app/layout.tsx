@@ -7,6 +7,7 @@ import { TopBar } from "@/components/TopBar";
 import { Footer } from "@/components/Footer";
 import { RevealObserver } from "@/components/Reveal";
 import { PageTransitionProvider } from "@/components/PageTransition";
+import { ChatAvatar } from "@/components/ChatAvatar";
 import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="main">{children}</main>
           <Footer />
           <RevealObserver />
+          <ChatAvatar />
         </PageTransitionProvider>
         {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
       </body>
