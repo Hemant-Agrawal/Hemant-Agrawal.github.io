@@ -148,6 +148,21 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 500; letter-spacing: -0.
   -webkit-background-clip: text; background-clip: text; color: transparent;
   font-style: italic; font-weight: 400;
 }
+/* Italic + background-clip:text — the slanted ascender of a trailing glyph
+   overhangs the inline box, and Android Chrome clips it to transparency
+   ("defend" reads "defena"). Pad the paint box past the last glyph; clone
+   the padding on wrapped line fragments. */
+.page-head .accent,
+.about .why-heading em,
+.ai-hero h2 em,
+.form-left .accent,
+.closer .accent,
+.lab-copy .accent {
+  padding-right: 0.08em;
+  margin-right: -0.02em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 .page-head .lead { color: var(--fg-1); font-size: 18px; max-width: 640px; line-height: 1.55; }
 
 /* Buttons */
