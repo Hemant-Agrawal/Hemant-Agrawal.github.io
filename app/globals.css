@@ -253,7 +253,8 @@ footer.foot a:hover { color: var(--fg-0); }
     max-width: 100%;
   }
 
-  /* Bottom dock — horizontal, centered, safe-area aware */
+  /* Bottom dock — horizontal, centered, safe-area aware.
+     Socials live on the Contact page on mobile; dock is pages only. */
   .rail {
     left: 50%;
     right: auto;
@@ -261,25 +262,28 @@ footer.foot a:hover { color: var(--fg-0); }
     bottom: max(12px, env(safe-area-inset-bottom, 12px));
     transform: translateX(-50%);
     flex-direction: row;
-    gap: 2px;
-    padding: 8px 10px;
-    max-width: calc(100vw - 24px);
+    justify-content: space-between;
+    gap: 0;
+    padding: 8px 12px;
+    width: 95vw;
+    max-width: 95vw;
     overflow: visible;
   }
+  .rail .ext,
+  .rail .sep { display: none; }
   .rail .mark {
     margin-bottom: 0;
-    margin-right: 6px;
-    width: 32px; height: 32px;
-    font-size: 11px;
+    margin-right: 0;
+    width: 40px; height: 40px;
+    font-size: 13px;
   }
   .rail a {
-    width: 32px; height: 32px;
-    font-size: 10px;
+    width: 40px; height: 40px;
+    font-size: 12px;
   }
-  .rail .sep {
-    width: 1px; height: auto;
-    align-self: stretch;
-    margin: 4px 6px;
+  .rail a svg {
+    width: 20px;
+    height: 20px;
   }
   /* Tooltips above icons on mobile */
   .rail a .tip {
@@ -312,13 +316,9 @@ footer.foot a:hover { color: var(--fg-0); }
 
 /* Very small phones */
 @media (max-width: 380px) {
-  .rail {
-    padding: 6px 8px;
-    gap: 0;
-  }
-  .rail a, .rail .mark { width: 28px; height: 28px; font-size: 9.5px; }
-  .rail .mark { margin-right: 4px; }
-  .rail .sep { margin: 4px 4px; }
+  .rail { padding: 6px 8px; }
+  .rail a, .rail .mark { width: 36px; height: 36px; font-size: 11px; }
+  .rail a svg { width: 18px; height: 18px; }
 }
 
 /* ===== Custom scrollbar ===== */

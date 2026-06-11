@@ -131,6 +131,7 @@ export function Rail() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
+        className="ext"
       >
         {ICONS.linkedin}
         <span className="tip">LinkedIn</span>
@@ -140,6 +141,7 @@ export function Rail() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
+        className="ext"
       >
         {ICONS.github}
         <span className="tip">GitHub</span>
